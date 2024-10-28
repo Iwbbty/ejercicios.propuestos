@@ -1,0 +1,142 @@
+import math
+
+# 1. Valor de contado
+CI = 500000
+A = 185500
+n = 12
+i_mensual = 0.025  # 30% anual, capitalización mensual (2.5% mensual)
+
+P = CI + A * (1 - (1 + i_mensual) ** -n) / i_mensual
+print("Valor de contado:", round(P, 2))
+
+# 2. Depósitos semestrales necesarios
+S = 19560000
+n = 10
+i_semestral = 0.15  # 30% anual, capitalización semestral (15% semestral)
+
+P = S * (i_semestral / ((1 + i_semestral) ** n - 1))
+print("Depósitos semestrales necesarios:", round(P, 2))
+
+# 3. Decisión de venta o arrendamiento
+precio_venta = 3500000
+R = 400000
+n = 12
+i_mensual = 0.48 / 12
+
+PV_arrendamiento = R * (1 - (1 + i_mensual) ** -n) / i_mensual
+mejor_opcion = "Vender" if precio_venta > PV_arrendamiento else "Arrendar"
+print("Decisión:", mejor_opcion)
+
+# 4. Pago único hoy para arrendar por 8 meses
+C = 200000
+i = 0.03
+n = 8
+
+VP = C * (1 - (1 + i) ** -n) / i
+print("Pago único inicial:", round(VP, 2))
+
+# 5. Financiación del vehículo
+C = 30000
+n = 24
+i = 0.02
+
+Q = C * i / (1 - (1 + i) ** -n)
+VF = Q * ((1 + i) ** n - 1) / i
+print("Valor de las cuotas mensuales:", round(Q, 3))
+print("Valor futuro equivalente:", round(VF, 2))
+
+# 6. Cuotas trimestrales para la universidad
+VP = 1400000
+r_mensual = 0.03
+r_trimestral = (1 + r_mensual) ** 3 - 1
+n = 4
+
+P = VP * r_trimestral / (1 - (1 + r_trimestral) ** -n)
+print("Cuota trimestral:", round(P, 2))
+
+# 7. Préstamo de Don Raúl
+P = 10000000
+r_anual = 0.38
+r_mensual = r_anual / 12
+n = 12
+
+C = P * (r_mensual * (1 + r_mensual) ** n) / ((1 + r_mensual) ** n - 1)
+print("Valor de las cuotas:", round(C, 2))
+
+# 8. Depósito mensual para ahorro en cuenta
+P = 250
+r_anual = 0.04
+r_mensual = r_anual / 12
+n = 60
+
+VF = P * ((1 + r_mensual) ** n - 1) / r_mensual
+print("Monto acumulado:", round(VF, 2))
+
+# 9. Ahorro trimestral para carrera universitaria
+P = 1500
+r_anual = 0.07
+r_trimestral = r_anual / 4
+n = 24
+
+VF = P * ((1 + r_trimestral) ** n - 1) / r_trimestral
+print("Monto futuro:", round(VF, 2))
+
+# 10. Pago único equivalente para anualidad semestral
+P = 1000
+r_anual = 0.08
+r_semestral = r_anual / 2
+n = 25
+
+VP = P * (1 - (1 + r_semestral) ** -n) / r_semestral
+print("Valor presente de los pagos semestrales:", round(VP, 2))
+
+# 11. Valor actual del terreno
+A = 18000
+r = 0.0625
+n = 20
+valor_venta = 15000
+
+VP_anualidad = A * (1 - (1 + r) ** -n) / r
+VP_venta = valor_venta / ((1 + r) ** n)
+VP_total = VP_anualidad + VP_venta
+print("Valor actual del terreno:", round(VP_total, 2))
+
+# 12. Comparación para compra de automóvil
+pago_inicial = 500
+R = 200
+n = 12
+i = 0.06 / 12
+
+VP_anualidad = R * (1 - (1 + i) ** -n) / i
+VP_total = pago_inicial + VP_anualidad
+mejor_opcion = "Comprar de contado" if VP_total > 2750 else "Financiar"
+print("Decisión para compra del auto:", mejor_opcion)
+
+# 13. Valor efectivo del contrato
+P = 400
+n = 20
+i = 0.08 / 2
+pago_final = 2500
+
+VP_anualidad = P * (1 - (1 + i) ** -n) / i
+VP_final = pago_final / ((1 + i) ** n)
+VP_total = VP_anualidad + VP_final
+print("Valor efectivo del contrato:", round(VP_total, 2))
+
+# 14. Tiempo de depósitos mensuales
+FV = 25000
+R = 450
+i = 0.08 / 12
+
+n = math.log(FV * i / R + 1) / math.log(1 + i)
+print("Meses necesarios:", round(n, 1))
+
+# 15. Pagos para cancelar deuda y pago final
+VP = 120000
+R = 18000
+i = 0.15 / 12
+
+n = math.floor(math.log((VP * i / R) + 1) / math.log(1 + i))
+pago_final = VP - R * n
+print("Número de pagos completos:", n)
+print("Pago final:", round(pago_final, 2))
